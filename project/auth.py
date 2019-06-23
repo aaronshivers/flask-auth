@@ -1,5 +1,5 @@
 # Import Dependencies
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 from . import db
 
 auth = Blueprint('auth', __name__)
@@ -8,9 +8,9 @@ auth = Blueprint('auth', __name__)
 def login():
   return render_template('login.html')
 
-@auth.route('/signup')
+@auth.route('/signup', methods=['POST'])
 def signup():
-  return render_template('signup.html')
+  return redirect(url_for('auth.login'))
 
 @auth.route('/logout')
 def logout():

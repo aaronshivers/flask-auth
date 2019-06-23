@@ -1,5 +1,5 @@
 # Import Dependencies
-from flask import Flask__
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 
@@ -30,5 +30,3 @@ def create_app():
   app.register_blueprint(main_blueprint)
 
   return app
-
-

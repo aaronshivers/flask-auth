@@ -6,6 +6,7 @@ import os
 # Initialize Database
 db = SQLAlchemy()
 
+# Setup the Application
 def create_app()
 
   # Initialize Application

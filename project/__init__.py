@@ -1,6 +1,7 @@
 # Import Dependencies
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 import os
 
 # Initialize Database
@@ -20,6 +21,17 @@ def create_app():
 
   # Initialize Database
   db.init_app(app)
+
+  # Setup Login Manager
+  login_manager = LoginManager()
+  login_manager.login_view = 'auth.login'
+  login_manager.init_app(app)
+
+  from .models import User
+
+  @login_manager.user_loader
+  def load_user(user_id):
+    return User.query.get(int(user_id))
 
   # Blueprint for Auth Routes
   from .auth import auth as auth_blueprint

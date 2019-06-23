@@ -7,10 +7,11 @@ import os
 db = SQLAlchemy()
 
 # Setup the Application
-def create_app()
+def create_app():
 
   # Initialize Application
   app = Flask(__name__)
+  basedir = os.path.abspath(os.path.dirname(__file__))
 
   # Configure Application
   app.config['SECRET_KEY'] = 'this-is-a-secret'

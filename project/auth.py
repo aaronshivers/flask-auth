@@ -53,3 +53,10 @@ def signup():
 def logout():
   logout_user()
   return redirect(url_for('main.index'))
+
+@auth.route('/results', methods=['POST'])
+@login_required
+def get_results():
+  query = request.form.get('query')
+  # result = db.session.query()
+  return query
